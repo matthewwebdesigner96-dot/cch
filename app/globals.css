@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-roboto);
+  --font-heading: var(--font-lexend);
+  --transition-timing-function-ease-out-expo: cubic-bezier(
+    0.075,
+    0.82,
+    0.165,
+    1
+  );
+  --transition-duration-600: 600ms;
+
+  /* Brand Colors */
+  --color-navy-dark: #0C2438;
+  --color-navy-mid: #194B75;
+  --color-blue-deep: #033E6E;
+  --color-gold: #A1896D;
+  --color-blue-light: #E8F4FF;
+  --color-off-white: #FBFDFF;
+  --color-green-accent: #00eca6;
+  --color-blue-pale: #F9FCFF;
+
+  /* Marquee Animation */
+  --animate-marquee: marquee 80s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 80s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}

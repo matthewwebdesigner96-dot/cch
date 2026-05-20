@@ -1,0 +1,115 @@
+"use client";
+import { submitForm } from "@/app/actions";
+import { ReactNode, useActionState } from "react";
+
+const ContactForm = ({
+  className,
+  children,
+}: {
+  className: string;
+  children?: ReactNode;
+}) => {
+  const [state, formAction, pending] = useActionState(submitForm, {
+    success: false,
+    message: "",
+    errors: {},
+  });
+
+  return (
+    <div className={`${className}`}>
+      <h2 className="flex flex-col w-fit text-2xl lg:text-4xl font-extralight leading-8 md:leading-15">
+        Contact
+      </h2>
+
+      {children}
+
+      <form action={formAction} className="flex flex-col gap-6">
+        {/* Honeypot field — hidden from users, bots fill this in */}
+        <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+        <div className="flex flex-col lg:flex-row gap-6 text-sm">
+          <div className="flex-1 flex flex-col gap-2">
+            <label htmlFor="firstName">First Name</label>
+            <input
+              className="bg-white rounded-full py-2 px-4 text-navy-dark"
+              type="text"
+              name="firstName"
+              id="firstName"
+              required
+            />
+            {state.errors?.firstName && (
+              <p className="text-red-500 text-xs mt-1">
+                {state.errors.firstName}
+              </p>
+            )}
+          </div>
+
+          <div className="flex-1 flex flex-col gap-2 ">
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              className="bg-white rounded-full py-2 px-4 text-navy-dark"
+              type="text"
+              name="lastName"
+              id="lastName"
+              required
+            />
+            {state.errors?.lastName && (
+              <p className="text-red-500 text-xs mt-1">
+                {state.errors.lastName}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2 text-sm">
+          <label htmlFor="email">Email</label>
+          <input
+            className="bg-white rounded-full py-2 px-4 text-navy-dark"
+            type="email"
+            name="email"
+            id="email"
+            required
+          />
+          {state.errors?.email && (
+            <p className="text-red-500 text-xs mt-1">{state.errors.email}</p>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2 text-sm">
+          <label htmlFor="message">Message</label>
+          <textarea
+            className="bg-white rounded-3xl py-2 px-4 text-navy-dark"
+            name="message"
+            id="message"
+            rows={8}
+            required
+          />
+          {state.errors?.message && (
+            <p className="text-red-500 text-xs mt-1">{state.errors.message}</p>
+          )}
+        </div>
+
+        {state.message && (
+          <div
+            className={`col-span-2 p-3 rounded ${
+              state.success
+                ? "bg-green-100 text-green-700"
+                : "bg-red-100 text-red-700"
+            }`}
+          >
+            {state.message}
+          </div>
+        )}
+
+        <button
+          className="bg-gold text-lg col-span-2 py-3 rounded-xl cursor-pointer disabled:opacity-50 uppercase tracking-wide"
+          type="submit"
+          disabled={pending}
+        >
+          {pending ? "Submitting..." : "Submit"}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default ContactForm;

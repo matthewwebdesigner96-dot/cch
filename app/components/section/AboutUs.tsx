@@ -1,0 +1,175 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+interface LogoItem {
+  src: string;
+  slug: string;
+}
+
+interface AboutUsProps {
+  logos: LogoItem[];
+}
+
+const AboutUs = ({ logos }: AboutUsProps) => {
+  // parallax state
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const [translateY, setTranslateY] = useState(0);
+
+  useEffect(() => {
+    let rafId = 0;
+    const maxTranslate = 50;
+
+    function update() {
+      if (!wrapperRef.current) return;
+      const rect = wrapperRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight || 1;
+      const elementCenter = rect.top + rect.height / 2;
+      const normalized =
+        (elementCenter - windowHeight / 2) / (windowHeight / 2);
+      const next = Math.max(-1, Math.min(1, normalized)) * maxTranslate;
+      setTranslateY(next);
+    }
+
+    const onScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  return (
+    <section className="px-4 xl:px-0 pb-16 md:pb-28 w-screen min-h-screen max-w-7xl mx-auto">
+      <div className="flex flex-col gap-10 -mt-40 lg:-mt-32">
+        <p className="text-blue-deep text-xl">
+          Trusted Partners of CCH Investments, from film production to consumer products
+        </p>
+        {/* Swiper */}
+        <div className="group whitespace-nowrap py-4 flex flex-col gap-4 overflow-hidden shadow-2xl rounded-4xl bg-white">
+          <div className="w-fit">
+            <div className="flex gap-4 animate-marquee group-hover:[animation-play-state:paused]">
+              {[...logos, ...logos].map((logo, index) => (
+                <Link
+                  key={index}
+                  href={`/portfolios/${logo.slug}`}
+                  className="relative w-32 h-24 lg:w-64 lg:h-40 shrink-0 overflow-hidden transition duration-600 ease-out-expo block"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={`Logo ${index + 1}`}
+                    fill
+                    className="object-contain p-4 brightness-0 opacity-60 hover:opacity-100 transition duration-300"
+                    sizes="256px"
+                    loading="lazy"
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="md:hidden w-fit">
+            <div className="flex gap-4 animate-marquee-reverse group-hover:[animation-play-state:paused]">
+              {[...logos, ...logos].map((logo, index) => (
+                <Link
+                  key={index}
+                  href={`/portfolios/${logo.slug}`}
+                  className="relative w-32 h-24 md:w-64 md:h-40 shrink-0 overflow-hidden transition duration-600 ease-out-expo block"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={`Logo ${index + 1}`}
+                    fill
+                    className="object-contain p-4 brightness-0 opacity-60 hover:opacity-100 transition duration-300"
+                    sizes="256px"
+                    loading="lazy"
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-18 grid grid-cols-1 text-blue-deep gap-x-4 gap-y-8 md:gap-x-16 lg:gap-x-32 lg:grid-cols-2 lg:grid-rows-[auto_1fr] md:px-4">
+        <div
+          ref={wrapperRef}
+          className="relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-152 lg:row-span-2 order-2 lg:order-1"
+        >
+          <div
+            className="absolute inset-0 will-change-transform"
+            style={{
+              transform: `translateY(${translateY}px)`,
+              transition: "transform 0.1s linear",
+            }}
+          >
+            <Image
+              src="/about-us.png"
+              alt="building view"
+              fill
+              className="object-cover scale-110"
+              sizes="(min-width: 1024px) 655px, 100vw"
+              priority
+            />
+          </div>
+        </div>
+
+        <motion.div
+          className="flex flex-col md:gap-6 order-1 lg:order-2 lg:h-fit text-navy-dark"
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.7 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <span className="text-xl w-fit rounded-full font-heading font-bold">
+            ABOUT US
+          </span>
+          <h2 className="flex flex-col w-fit text-2xl lg:text-4xl font-extralight leading-15">
+            Funding Solutions
+          </h2>
+        </motion.div>
+
+        <motion.div className="order-3 flex flex-col gap-4 text-navy-dark"
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}>
+          <p>
+            CCH Investments is a Canadian family office dedicated to investing
+            in private companies with a long-term perspective and a focus on
+            building lasting value. Guided by a hands-on, relationship-driven
+            approach, we work closely with founders and management teams to
+            support sustainable growth, operational excellence, and strategic
+            development.
+          </p>
+
+          <p className="mb-4">
+            By partnering with the businesses we invest in, CCH provides not
+            only capital but also experience, insight, and active involvement.
+            Our firm prioritizes strong relationships, aligned values, and
+            thoughtful decision-making, aiming to help companies scale
+            responsibly while creating enduring value for all stakeholders.
+          </p>
+
+          <Link
+            href="/"
+            className="px-4 lg:px-6 py-2 rounded-4xl text-xs lg:text-base transition-all ease-in duration-200 bg-blue-light text-blue-deep hover:bg-blue-deep hover:text-blue-light w-fit uppercase tracking-wide lg:mt-10"
+          >
+            LEARN MORE
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutUs;
