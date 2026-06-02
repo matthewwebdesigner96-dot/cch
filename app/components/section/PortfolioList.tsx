@@ -12,7 +12,7 @@ const item = {
 
 const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
   return (
-    <motion.section className="flex flex-col">
+    <motion.section className="mx-4 max-w-7xl xl:mx-auto flex flex-col">
       {data.map((el) => (
         <Link key={el.id} href={"/portfolios/" + el.slug}>
           <motion.div className="md:hover:border-2 border-black group md:hover:text-black md:hover:bg-white transition-all duration-500 ease-in min-h-50 flex flex-col md:flex-row lg:gap-20 cursor-pointer">
@@ -44,7 +44,7 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="py-10 md:py-0 px-4.5 self-center flex flex-col gap-4 md:max-h-48 overflow-hidden"
             >
-              <span className="w-fit text-green-400 font-light text-lg">{el.acf.key_tags}</span>
+              <span className="w-fit text-gold font-light text-lg">{el.acf.key_tags}</span>
               <h2 className="text-2xl font-semibold font-heading">
                 {el.title.rendered}
               </h2>
