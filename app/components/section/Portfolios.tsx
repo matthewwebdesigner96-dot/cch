@@ -56,10 +56,29 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
     return <div>Loading portfolios...</div>;
   }
   return (
-    <section className="w-full bg-white">
-      <div className="max-w-7xl mx-auto py-20 relative flex flex-col items-center gap-8 h-50vh md:min-h-screen px-4 md:px-8 lg:grid lg:grid-cols-[50%_45%] lg:place-items-center lg:gap-16">
+    <section className="w-full bg-white relative">
+      {/* Desktop prev/next arrows */}
+      <button
+        onClick={() => swiperRef.current?.slidePrev()}
+        className="hidden lg:block absolute left-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
+        aria-label="Previous slide"
+      >
+        <Image src="/circle-arrow-left.svg" alt="" height={60} width={60} />
+      </button>
+      <button
+        onClick={() => swiperRef.current?.slideNext()}
+        className="hidden lg:block absolute right-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
+        aria-label="Next slide"
+      >
+        <Image src="/circle-arrow-right.svg" alt="" height={60} width={60} />
+      </button>
+
+      <div className="max-w-7xl mx-auto py-20 relative flex flex-col items-center gap-8 h-50vh md:min-h-screen lg:min-h-[70vh] px-4 md:px-8 lg:grid lg:grid-cols-[50%_45%] lg:place-items-center lg:gap-16">
+        <span className="order-0 self-start lg:hidden text-xl font-heading font-bold text-black">Our Portfolio</span>
+
         <div className="order-2 lg:order-1 w-full max-w-600 hidden lg:block mx-auto">
-          <h1 className="text-2xl lg:text-4xl font-extralight leading-8 md:leading-15 text-black mb-9">
+          <span className="text-xl w-fit rounded-full font-heading font-bold text-black">Our Portfolio</span>
+          <h1 className="text-2xl lg:text-4xl font-extralight leading-8 md:leading-15 text-black mb-9 mt-4">
             {activeSlide?.title.rendered || "Capital Portfolio"}
           </h1>
           <p className="mb-8 text-black">
@@ -92,22 +111,25 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
         </div>
 
         <div className="order-1 lg:order-2 relative w-[320px] h-105 sm:w-90 sm:h-115 md:w-105 md:h-125">
+          {/* Mobile pagination — matches Edge style */}
           <button
             aria-label="Previous slide"
-            className="portfolio-prev absolute -left-9 top-1/2 z-20 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 text-black shadow"
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="portfolio-prev absolute -left-4 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/90 text-black shadow pointer-events-auto lg:hidden"
             type="button"
           >
             &#10094;
           </button>
-
           <button
             aria-label="Next slide"
-            className="portfolio-next absolute -right-9 top-1/2 z-20 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 text-black shadow"
+            onClick={() => swiperRef.current?.slideNext()}
+            className="portfolio-next absolute -right-4 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/90 text-black shadow pointer-events-auto lg:hidden"
             type="button"
           >
             &#10095;
           </button>
 
+          <div className="w-full h-full shadow-2xl rounded-xl overflow-hidden">
           <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-6 lg:hidden pointer-events-none">
             <div
               className={`mx-auto max-w-[92%] text-white transition-opacity duration-300 ease-in-out ${
@@ -183,6 +205,7 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
               </SwiperSlide>
             ))}
           </Swiper>
+          </div>
         </div>
       </div>
     </section>

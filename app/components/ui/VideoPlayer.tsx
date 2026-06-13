@@ -26,7 +26,7 @@ export default function VideoPlayer({
   }, []);
 
   return (
-    <div className={`relative overflow-hidden h-[600px] ${className ?? ''}`}>
+    <div className={`relative overflow-hidden h-[600px] shadow-2xl ${className ?? ''}`}>
       <video
         ref={ref}
         muted

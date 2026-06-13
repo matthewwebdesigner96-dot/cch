@@ -43,8 +43,8 @@ const Nav = () => {
   return (
     <nav aria-label="Main navigation">
       <div className="hidden md:block">
-        <ul className="flex gap-2 items-center lg:gap-6">
-          {LINK_ARR.map((el) => (
+        <ul className="flex gap-6 items-center lg:gap-12">
+          {LINK_ARR.filter((el) => el.link !== "#our-edge" && el.link !== "#contact-us").map((el) => (
             <li key={el.text}>
               <Link
                 className={`text-xs relative lg:text-base before:transition-all before:duration-400 before:ease-linear before:content-[''] before:absolute before:top-full before:block before:w-0 before:h-px before:bg-white ${activeId === el.link.replace("#", "") && "before:w-full"}`}
@@ -55,7 +55,7 @@ const Nav = () => {
               </Link>
             </li>
           ))}
-          <Button variant="primary">Apply Now</Button>
+          <Link href="/#contact-us" onClick={handleLinkClick}><Button variant="primary">Contact Us</Button></Link>
         </ul>
       </div>
 

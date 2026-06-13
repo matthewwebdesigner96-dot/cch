@@ -36,11 +36,11 @@ const Header = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 z-50 w-full bg-navy-dark/45 backdrop-blur-sm"
+      className="fixed top-0 left-0 right-0 z-50 w-full bg-linear-to-b from-[#3d6878] to-transparent"
       animate={{ y: visible ? 0 : "-100%" }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      <header className="flex items-center justify-between max-w-7xl mx-auto px-4 py-4">
+      <header className="flex items-center justify-between max-w-7xl mx-auto px-4 py-8">
         <Link href="/" onClick={handleLogoClick}>
           <div>
             <Image

@@ -92,7 +92,7 @@ const Edge = () => {
           >
             {sectors.map((el, index) => (
               <SplideSlide className="flex h-fit gap-4 flex-col" key={index}>
-                <div className="group relative w-full h-64 md:h-115 rounded-xl overflow-hidden">
+                <div className="group relative w-full h-64 md:h-115 rounded-xl overflow-hidden shadow-2xl">
                   <Image
                     src={el.img}
                     alt={el.title}

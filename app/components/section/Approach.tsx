@@ -1,12 +1,18 @@
 "use client";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const Approach = () => {
   return (
     <section className=" bg-navy-mid max-h-2/3 w-screen grid grid-cols-1 grid-rows-2 md:grid-rows-1 md:grid-cols-2 md:gap-14">
       <div className="relative">
-        <Image className="object-cover" src="/aproach-bg.webp" alt="" fill sizes="(min-width: 768px) 50vw, 100vw" />
+        <video
+          className="w-full h-full object-cover"
+          src="/video/cch-approach.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
       </div>
 
       <motion.div
