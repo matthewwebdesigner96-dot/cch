@@ -100,7 +100,7 @@ const Edge = () => {
                     sizes="(max-width: 640px) 100vw, (max-width: 1250px) 33vw, 365px"
                     className="object-cover"
                   />
-                  <div className="bg-black opacity-80 hidden group-hover:flex  absolute inset-0">
+                  <div className="bg-navy-dark opacity-80 hidden group-hover:flex absolute inset-0">
                     <Image
                       className="object-scale-down"
                       src="/web-round.svg"

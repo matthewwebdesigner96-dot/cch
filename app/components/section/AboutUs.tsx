@@ -160,12 +160,6 @@ const AboutUs = ({ logos }: AboutUsProps) => {
             responsibly while creating enduring value for all stakeholders.
           </p>
 
-          <Link
-            href="/"
-            className="px-4 lg:px-6 py-2 rounded-4xl text-xs lg:text-base transition-all ease-in duration-200 bg-blue-light text-blue-deep hover:bg-blue-deep hover:text-blue-light w-fit uppercase tracking-wide lg:mt-10"
-          >
-            LEARN MORE
-          </Link>
         </motion.div>
       </div>
     </section>

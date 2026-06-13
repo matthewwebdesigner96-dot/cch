@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import BackgroundSection from "../../components/layout/BackgroundSection";
 import PortfolioBackgroundCarousel from "../../components/section/PortfolioBackgroundCarousel";
+import ScrollTextColor from "@/app/components/ui/ScrollTextColor";
 import Link from "next/link";
 import Button from "@/app/components/ui/Button";
 import ContactSingle from "@/app/components/section/ContactSingle";
@@ -56,9 +57,9 @@ export default async function PortfolioPage({ params }: PageProps) {
     <>
       <BackgroundSection variant="gradient" className="py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <h1 className="mt-10 w-full max-w-7xl text-2xl md:text-3xl mb-6">
+          {/* <h1 className="mt-10 w-full max-w-7xl text-2xl md:text-3xl mb-6">
             {portfolio.title.rendered}
-          </h1>
+          </h1> */}
 
           {featuredImage ? (
             <FeaturedImageMotion
@@ -69,7 +70,8 @@ export default async function PortfolioPage({ params }: PageProps) {
             />
           ) : null}
 
-          <div id="portfolio-content" className="pt-8 lg:pt-25 space-y-4 w-full max-w-7xl mx-auto flex lg:flex-row flex-col gap-12 mb-40">
+          <ScrollTextColor startScroll={500} endScroll={650} className="pt-8 lg:pt-25 w-full max-w-7xl mx-auto mb-40">
+          <div id="portfolio-content" className="space-y-4 flex lg:flex-row flex-col gap-12">
             <div>
               <Image
                 src={portfolio.acf?.project_logo || ""}
@@ -79,15 +81,18 @@ export default async function PortfolioPage({ params }: PageProps) {
                 className="mb-4 mx-auto"
               />
               <div className="lg:pl-7.5 mx-12 space-y-4">
-                <p>
-                  <strong>Region:</strong> {portfolio.acf?.region}
-                </p>
-                <p>
-                  <strong>Industry:</strong> {portfolio.acf?.industry}
-                </p>
-                <p>
-                  <strong>Year:</strong> {portfolio.acf?.year}
-                </p>
+                <div className="flex flex-col gap-1">
+                  <strong>Region:</strong>
+                  <span>{portfolio.acf?.region}</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <strong>Industry:</strong>
+                  <span>{portfolio.acf?.industry}</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <strong>Year:</strong>
+                  <span>{portfolio.acf?.year}</span>
+                </div>
                 <Link href="/" className="text-blue-500 hover:underline">
                   <Button variant="secondary" className="w-40">
                     Learn More
@@ -95,8 +100,8 @@ export default async function PortfolioPage({ params }: PageProps) {
                 </Link>
               </div>
             </div>
-            <div className="lg:pl-12 lg:border-l border-white lg:flex lg:items-center">
-              <div className="space-y-6 text-lg text-white">
+            <div className="lg:pl-12 lg:border-l border-current lg:flex lg:items-center">
+              <div className="space-y-6 text-lg">
                 {(portfolio.acf?.description || "")
                   .split(/\r?\n\r?\n/)
                   .filter((chunk: string) => chunk.trim().length > 0)
@@ -106,6 +111,7 @@ export default async function PortfolioPage({ params }: PageProps) {
               </div>
             </div>
           </div>
+          </ScrollTextColor>
         </div>
         <PortfolioBackgroundCarousel items={allPortfolios} />
       </BackgroundSection>

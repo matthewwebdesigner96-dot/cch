@@ -18,7 +18,7 @@ export default function PortfolioBackgroundCarousel({ items }: PortfolioBackgrou
     if (items.length === 0) return null;
 
     return (
-        <section className="mt-12">
+        <section className="mt-12 w-screen relative left-1/2 -translate-x-1/2">
             <div className="overflow-hidden">
                 <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
                     {loopedItems.map((item, index) => {
@@ -29,7 +29,7 @@ export default function PortfolioBackgroundCarousel({ items }: PortfolioBackgrou
                             <Link
                                 key={item.id + "-" + index}
                                 href={"/portfolios/" + item.slug}
-                                className="group relative block h-56 w-72 md:h-72 md:w-96 shrink-0 overflow-hidden bg-black"
+                                className="group relative block h-56 w-72 md:h-72 md:w-96 shrink-0 overflow-hidden bg-navy-dark"
                             >
                                 {cover ? (
                                     <Image
@@ -41,7 +41,7 @@ export default function PortfolioBackgroundCarousel({ items }: PortfolioBackgrou
                                     />
                                 ) : null}
 
-                                <div className="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/85" />
+                                <div className="absolute inset-0 bg-navy-dark/0 transition duration-300 group-hover:bg-navy-dark/85" />
 
                                 {logo ? (
                                     <div className="absolute inset-0 flex items-center justify-center p-6">

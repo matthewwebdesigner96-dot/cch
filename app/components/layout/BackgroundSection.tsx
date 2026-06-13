@@ -7,12 +7,14 @@ interface BackgroundSectionProps {
     children: ReactNode;
     className?: string;
     variant?: BackgroundVariant;
+    fullHeight?: boolean;
 }
 
 export default function BackgroundSection({
     children,
     className = "",
     variant = "gradient",
+    fullHeight = true,
 }: BackgroundSectionProps) {
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -31,7 +33,8 @@ export default function BackgroundSection({
     }, [variant]);
 
     const baseClasses = [
-        "flex flex-col px-2 md:px-4 min-h-screen max-w-screen",
+        "flex flex-col px-2 md:px-4 max-w-screen",
+        fullHeight ? "min-h-screen" : "",
         className,
     ]
         .filter(Boolean)
