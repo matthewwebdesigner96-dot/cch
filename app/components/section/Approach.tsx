@@ -16,14 +16,14 @@ const Approach = () => {
       </div>
 
       <motion.div
-        className="max-w-125 row-start-2 md:row-start-1 md:col-start-2 py-24 px-4 flex flex-col gap-4 md:gap-6"
+        className="max-w-125 row-start-2 md:row-start-1 md:col-start-2 py-16 md:py-24 px-4 flex flex-col gap-4 md:gap-6"
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.7 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <span className="text-xl w-fit rounded-full font-heading font-bold">
-          Our Approach
+          OUR APPROACH
         </span>
         <h2 className="flex flex-col w-fit text-2xl lg:text-4xl font-extralight leading-8 md:leading-15">
           Partners in Performance

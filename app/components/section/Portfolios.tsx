@@ -74,10 +74,10 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
       </button>
 
       <div className="max-w-7xl mx-auto py-20 relative flex flex-col items-center gap-8 h-50vh md:min-h-screen lg:min-h-[70vh] px-4 md:px-8 lg:grid lg:grid-cols-[50%_45%] lg:place-items-center lg:gap-16">
-        <span className="order-0 self-start lg:hidden text-xl font-heading font-bold text-black">Our Portfolio</span>
+        <span className="order-0 self-start lg:hidden text-xl font-heading font-bold text-black">OUR PORTFOLIO</span>
 
         <div className="order-2 lg:order-1 w-full max-w-600 hidden lg:block mx-auto">
-          <span className="text-xl w-fit rounded-full font-heading font-bold text-black">Our Portfolio</span>
+          <span className="text-xl w-fit rounded-full font-heading font-bold text-black">OUR PORTFOLIO</span>
           <h1 className="text-2xl lg:text-4xl font-extralight leading-8 md:leading-15 text-black mb-9 mt-4">
             {activeSlide?.title.rendered || "Capital Portfolio"}
           </h1>

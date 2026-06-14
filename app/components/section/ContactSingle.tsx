@@ -3,9 +3,9 @@ import ContactForm from "../ui/ContactForm";
 
 const ContactSingle = () => {
     return (
-        <section className="bg-navy-mid w-full flex justify-center min-h-screen items-center py-16 md:py-20 relative overflow-hidden">
+        <section className="bg-navy-mid w-full flex justify-center items-center py-16 md:py-24 relative overflow-hidden">
             <Image
-                className="object-cover"
+                className="hidden md:block object-cover"
                 src="/contact-bg.webp"
                 alt="building"
                 fill

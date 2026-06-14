@@ -50,7 +50,7 @@ const AboutUs = ({ logos }: AboutUsProps) => {
   }, []);
 
   return (
-    <section className="px-4 xl:px-0 pb-16 md:pb-28 w-screen min-h-screen max-w-7xl mx-auto">
+    <section className="px-4 xl:px-0 py-16 md:py-24 w-screen max-w-7xl mx-auto">
       <div className="flex flex-col gap-10 -mt-40 lg:-mt-32">
         <p className="text-blue-deep text-xl">
           Trusted Partners of CCH Investments, from film production to consumer products
@@ -100,7 +100,7 @@ const AboutUs = ({ logos }: AboutUsProps) => {
         </div>
       </div>
 
-      <div className="mt-18 grid grid-cols-1 text-blue-deep gap-x-4 gap-y-8 md:gap-x-16 lg:gap-x-32 lg:grid-cols-2 lg:grid-rows-[auto_1fr] md:px-4">
+      <div className="mt-24 grid grid-cols-1 text-blue-deep gap-x-4 gap-y-8 md:gap-x-16 lg:gap-x-32 lg:grid-cols-2 lg:grid-rows-[auto_1fr] md:px-4">
         <div
           ref={wrapperRef}
           className="relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-152 lg:row-span-2 order-2 lg:order-1"
@@ -133,7 +133,7 @@ const AboutUs = ({ logos }: AboutUsProps) => {
           <span className="text-xl w-fit rounded-full font-heading font-bold">
             ABOUT US
           </span>
-          <h2 className="flex flex-col w-fit text-2xl lg:text-4xl font-extralight leading-15">
+          <h2 className="flex flex-col w-fit text-2xl lg:text-4xl font-extralight leading-8 md:leading-15">
             Funding Solutions
           </h2>
         </motion.div>
