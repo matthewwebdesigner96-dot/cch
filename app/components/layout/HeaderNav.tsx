@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Button from "../ui/Button";
 import { useState, useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { LINK_ARR } from "@/lib/constants";
@@ -11,9 +11,15 @@ import { useHashNavigation } from "@/app/hooks/useHashNavigation";
 
 const Nav = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
   const sectionIds = useMemo(() => LINK_ARR.map((l) => l.link), []);
   const activeId = useScrollSpy(sectionIds, 0);
+
+  const isActive = (link: string) => {
+    if (link.startsWith("#")) return activeId === link.slice(1);
+    return pathname.startsWith(`/${link}`);
+  };
   const { handleLinkClick: navigate } = useHashNavigation();
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -47,7 +53,7 @@ const Nav = () => {
           {LINK_ARR.filter((el) => el.link !== "#our-edge" && el.link !== "#contact-us").map((el) => (
             <li key={el.text}>
               <Link
-                className={`text-xs relative lg:text-base before:transition-all before:duration-400 before:ease-linear before:content-[''] before:absolute before:top-full before:block before:w-0 before:h-px before:bg-white ${activeId === el.link.replace("#", "") && "before:w-full"}`}
+                className={`text-xs relative lg:text-base before:content-[''] before:absolute before:top-full before:mt-1 before:left-1/2 before:-translate-x-1/2 before:block before:h-0.5 before:bg-white before:transition-all before:duration-300 before:ease-in-out ${isActive(el.link) ? "before:w-8" : "before:w-0 hover:before:w-8"}`}
                 href={`/${el.link}`}
                 onClick={handleLinkClick}
               >

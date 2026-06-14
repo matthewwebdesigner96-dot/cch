@@ -14,7 +14,7 @@ const formSchema = z.object({
 type FormState = {
   success: boolean;
   message: string;
-  errors?: Partial<Record<string, string | string[]>>;
+  errors?: Record<string, string>;
 };
 
 export async function submitForm(prevState: FormState, formData: FormData) {
@@ -27,8 +27,15 @@ export async function submitForm(prevState: FormState, formData: FormData) {
   const validatedFields = formSchema.safeParse(rawValues);
 
   if (!validatedFields.success) {
+    const fieldErrors = validatedFields.error.flatten().fieldErrors;
+    const errors: Record<string, string> = {};
+    
+    for (const [key, value] of Object.entries(fieldErrors)) {
+      errors[key] = Array.isArray(value) ? value[0] : value;
+    }
+    
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
+      errors,
       message: "Missing Fields. Failed to Submit.",
       success: false,
     };

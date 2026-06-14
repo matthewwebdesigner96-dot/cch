@@ -16,10 +16,10 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
         return (
           <Link key={el.id} href={"/portfolios/" + el.slug}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="group flex flex-col md:flex-row cursor-pointer transition-all duration-300 border-b border-black/10 bg-white text-navy-dark hover:bg-navy-dark hover:text-white"
             >
               {/* Image */}
@@ -41,16 +41,20 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
               </div>
 
               {/* Content — simple flex on md, 3-col grid on lg */}
-              <div className="flex flex-1 flex-col justify-center gap-3 px-6 py-6 md:px-10 md:py-12 md:grid md:grid-cols-[1fr_1.8fr] lg:grid-cols-[1fr_1.8fr_auto] md:items-center md:gap-x-10 lg:gap-x-16">
+              <div className="flex flex-1 flex-col justify-center gap-3 px-6 py-6 md:px-10 md:py-20 md:grid md:grid-cols-[1fr_1.8fr] lg:grid-cols-[1fr_1.8fr_auto] md:items-center md:gap-x-10 lg:gap-x-16">
 
                 {/* Label + tag + title */}
-                <div className="flex flex-col gap-2">
-                  <span className="text-xs font-light tracking-wide text-navy-dark/40 group-hover:text-white/50 transition-colors duration-300">
-                    CCH Investments
-                  </span>
+                <div className="flex flex-col gap-4">
+                  <Image
+                    src="/logo.svg"
+                    alt="CCH Investments"
+                    width={120}
+                    height={32}
+                    className="transition-all duration-300 [filter:brightness(0)_saturate(100%)_invert(10%)_sepia(40%)_saturate(800%)_hue-rotate(180deg)] group-hover:[filter:brightness(0)_invert(1)]"
+                  />
 
                   {el.acf.industry && (
-                    <span className="w-fit text-xs px-3 py-1 rounded-sm border border-navy-dark/25 text-navy-dark/60 group-hover:border-white/25 group-hover:text-white/75 transition-colors duration-300">
+                    <span className="w-fit text-xs px-3 py-1 rounded-sm border border-navy-dark/25 text-navy-dark/60 group-hover:border-gold group-hover:text-gold transition-colors duration-300">
                       {el.acf.industry}
                     </span>
                   )}

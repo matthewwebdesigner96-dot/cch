@@ -17,6 +17,8 @@ export interface PortfolioItem {
     description: string;
     cover_image: string;
     key_tags: string;
+    linkedin_url: string;
+    website_url: string;
   };
   _embedded?: {
     "wp:featuredmedia"?: Array<{ source_url: string }>;

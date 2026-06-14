@@ -15,7 +15,7 @@ const FloatingField = ({
   label: string;
   type?: string;
   required?: boolean;
-  error?: string;
+  error?: string | undefined;
 }) => (
   <div className="relative flex-1 group">
     <input
@@ -39,9 +39,11 @@ const FloatingField = ({
 const ContactForm = ({
   className,
   children,
+  onFocusChange,
 }: {
   className: string;
   children?: ReactNode;
+  onFocusChange?: (focused: boolean) => void;
 }) => {
   const [state, formAction, pending] = useActionState(submitForm, {
     success: false,
@@ -51,13 +53,18 @@ const ContactForm = ({
 
   return (
     <div className={`${className}`}>
-      <h2 className="flex flex-col w-fit text-2xl lg:text-4xl font-extralight leading-8 md:leading-15">
-        CONTACT
-      </h2>
+      <span className="text-xl w-fit font-heading font-bold">
+        CONTACT US
+      </span>
 
       {children}
 
-      <form action={formAction} className="flex flex-col gap-10 mt-2">
+      <form
+        action={formAction}
+        className="flex flex-col gap-10 mt-2"
+        onFocus={() => onFocusChange?.(true)}
+        onBlur={() => onFocusChange?.(false)}
+      >
         <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
 
         <div className="flex flex-col sm:flex-row gap-10">
