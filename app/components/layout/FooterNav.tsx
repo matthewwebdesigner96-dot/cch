@@ -8,7 +8,7 @@ const FooterNav = () => {
 
   return (
     <nav aria-label="Footer Navigation">
-      <ul className="flex gap-5 items-center">
+      <ul className="flex flex-col gap-5 md:flex-row md:items-center">
         {LINK_ARR.map((el) => (
           <li key={el.text}>
             <Link
