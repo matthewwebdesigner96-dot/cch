@@ -51,7 +51,7 @@ const AboutUs = ({ logos }: AboutUsProps) => {
 
   return (
     <section className="px-4 xl:px-0 py-16 md:py-24 w-screen max-w-7xl mx-auto">
-      <div className="flex flex-col gap-10 -mt-40 lg:-mt-32">
+      <div className="flex flex-col gap-10">
         <p className="text-blue-deep text-xl">
           Trusted Partners of CCH Investments, from film production to consumer products
         </p>

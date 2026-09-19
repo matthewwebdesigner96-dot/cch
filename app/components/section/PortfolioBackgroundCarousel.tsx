@@ -18,7 +18,7 @@ export default function PortfolioBackgroundCarousel({ items }: PortfolioBackgrou
     if (items.length === 0) return null;
 
     return (
-        <section className="mt-12 w-screen relative left-1/2 -translate-x-1/2">
+        <section className="w-screen relative left-1/2 -translate-x-1/2">
             <div className="overflow-hidden">
                 <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
                     {loopedItems.map((item, index) => {

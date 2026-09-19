@@ -53,7 +53,7 @@ export default async function PortfolioPage({ params }: PageProps) {
 
   return (
     <>
-      <BackgroundSection variant="gradient" className="py-20">
+      <BackgroundSection variant="gradient" className="pt-20">
         <div className="mx-auto max-w-7xl px-4">
           {/* <h1 className="mt-10 w-full max-w-7xl text-2xl md:text-3xl mb-6">
             {portfolio.title.rendered}
@@ -68,7 +68,7 @@ export default async function PortfolioPage({ params }: PageProps) {
             />
           ) : null}
 
-          <ScrollTextColor startScroll={500} endScroll={650} className="pt-8 lg:pt-25 w-full max-w-7xl mx-auto mb-40">
+          <ScrollTextColor startScroll={500} endScroll={650} className="pt-8 lg:pt-25 w-full max-w-7xl mx-auto">
           <div id="portfolio-content" className="space-y-4 flex lg:flex-row flex-col gap-12">
             <div>
               <Image

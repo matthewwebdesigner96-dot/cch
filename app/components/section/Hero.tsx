@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Button from "../ui/Button";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -32,9 +32,9 @@ const Hero = () => {
           FUNDING SOLUTIONS BUILT ON TRUST
         </motion.h1>
         <motion.div variants={itemVariants}>
-          <Button variant="secondary" className="w-fit">
+          <Link href="/portfolios" className="w-fit bg-blue-light text-blue-deep hover:bg-blue-deep hover:text-blue-light px-4 lg:px-6 py-2 rounded-4xl text-xs lg:text-base cursor-pointer transition-all ease-in duration-200 uppercase tracking-wide">
             LEARN MORE
-          </Button>
+          </Link>
         </motion.div>
       </div>
 

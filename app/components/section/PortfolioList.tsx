@@ -4,6 +4,12 @@ import { PortfolioItem } from "@/lib/wordpress";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Inter } from "next/font/google";
+
+const playfair = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
   return (
@@ -42,7 +48,6 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
 
               {/* Content — simple flex on md, 3-col grid on lg */}
               <div className="flex flex-1 flex-col justify-center gap-3 px-6 py-6 md:px-10 md:py-20 md:grid md:grid-cols-[1fr_1.8fr] lg:grid-cols-[1fr_1.8fr_auto] md:items-center md:gap-x-10 lg:gap-x-16">
-
                 {/* Label + tag + title */}
                 <div className="flex flex-col gap-4">
                   <Image
@@ -65,7 +70,9 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
                 </div>
 
                 {/* Description — hidden on md, visible on lg */}
-                <p className="text-sm leading-relaxed line-clamp-3 text-navy-dark/55 group-hover:text-white/65 transition-colors duration-300">
+                <p
+                  className={`${playfair.className} text-sm leading-relaxed line-clamp-3 text-navy-dark/55 group-hover:text-white/65 transition-colors duration-300`}
+                >
                   {description}
                 </p>
 
