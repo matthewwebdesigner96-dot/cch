@@ -9,37 +9,43 @@ import { motion } from "framer-motion";
 
 const sectors = [
   {
-    img: "https://picsum.photos/seed/1/640/400",
+    img: "/real_estate.webp",
+    svg: "/real_estate.svg",
     title: "Real Estate",
     description:
       "Investing in commercial and residential real estate with a focus on long-term appreciation and stable cash flow generation.",
   },
   {
-    img: "https://picsum.photos/seed/2/640/400",
+    img: "/industrials.webp",
+    svg: "/industrials.svg",
     title: "Technology",
     description:
       "Funding innovative technology companies that build scalable digital products and drive transformation across industries.",
   },
   {
-    img: "https://picsum.photos/seed/3/640/400",
+    img: "/finance_services.webp",
+    svg: "/finance_services.svg",
     title: "Healthcare",
     description:
       "Supporting healthcare initiatives including hospitals, medical research, and biotech startups improving quality of life.",
   },
   {
-    img: "https://picsum.photos/seed/4/640/400",
+    img: "/consumer_products.webp",
+    svg: "/consumer_products.svg",
     title: "Renewable Energy",
     description:
       "Developing sustainable energy projects such as solar and wind farms to promote clean and environmentally friendly power.",
   },
   {
-    img: "https://picsum.photos/seed/5/640/400",
+    img: "/media_entertainment.webp",
+    svg: "/media_entertainment.svg",
     title: "Infrastructure",
     description:
       "Investing in large-scale infrastructure projects including transportation networks and smart city developments.",
   },
   {
-    img: "https://picsum.photos/seed/6/640/400",
+    img: "/technology.webp",
+    svg: "/technology.svg",
     title: "Private Credit",
     description:
       "Expanding financial services through fintech solutions, private equity investments, and diversified asset management.",
@@ -102,11 +108,11 @@ const Edge = () => {
                   />
                   <div className="bg-navy-dark opacity-80 hidden group-hover:flex absolute inset-0">
                     <Image
-                      className="object-scale-down"
-                      src="/web-round.svg"
+                      src={el.svg}
                       alt=""
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1250px) 33vw, 365px"
+                      className="object-scale-down"
                     />
                   </div>
                 </div>

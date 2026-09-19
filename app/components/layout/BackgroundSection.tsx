@@ -8,6 +8,7 @@ interface BackgroundSectionProps {
     className?: string;
     variant?: BackgroundVariant;
     fullHeight?: boolean;
+    parallax?: boolean;
 }
 
 export default function BackgroundSection({
@@ -15,11 +16,12 @@ export default function BackgroundSection({
     className = "",
     variant = "gradient",
     fullHeight = true,
+    parallax = true,
 }: BackgroundSectionProps) {
     const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        if (variant !== "gradient") return;
+        if (variant !== "gradient" || !parallax) return;
 
         const handleScroll = () => {
             const position = Math.min((window.scrollY / 600) * 30, 30);
@@ -30,7 +32,7 @@ export default function BackgroundSection({
 
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [variant]);
+    }, [variant, parallax]);
 
     const baseClasses = [
         "flex flex-col px-2 md:px-4 max-w-screen",

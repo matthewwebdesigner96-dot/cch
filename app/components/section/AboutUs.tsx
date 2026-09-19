@@ -103,7 +103,7 @@ const AboutUs = ({ logos }: AboutUsProps) => {
       <div className="mt-24 grid grid-cols-1 text-blue-deep gap-x-4 gap-y-8 md:gap-x-16 lg:gap-x-32 lg:grid-cols-2 lg:grid-rows-[auto_1fr] md:px-4">
         <div
           ref={wrapperRef}
-          className="relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-152 lg:row-span-2 order-2 lg:order-1"
+          className="relative rounded-4xl overflow-hidden h-64 sm:h-80 md:h-96 lg:h-152 lg:row-span-2 order-2 lg:order-1"
         >
           <div
             className="absolute inset-0 will-change-transform"
@@ -113,7 +113,7 @@ const AboutUs = ({ logos }: AboutUsProps) => {
             }}
           >
             <Image
-              src="/about-us.png"
+              src="/about-us.webp"
               alt="building view"
               fill
               className="object-cover scale-110"

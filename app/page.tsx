@@ -8,16 +8,20 @@ import Contact from "./components/section/Contact";
 import { getPortfolios } from "@/lib/wordpress";
 import BackgroundSection from "./components/layout/BackgroundSection";
 import HashScroll from "./components/layout/HashScroll";
+import Image from "next/image";
 
 export default async function Home() {
   const portfolios = await getPortfolios();
-  const logos = portfolios.map((p) => ({ src: p.acf.project_logo, slug: p.slug }));
+  const logos = portfolios.map((p) => ({
+    src: p.acf.project_logo,
+    slug: p.slug,
+  }));
 
   return (
     <div className="flex overflow-hidden min-h-screen  bg-zinc-50 font-sans">
       <main>
         <HashScroll />
-        <BackgroundSection variant="gradient">
+        <BackgroundSection variant="gradient" parallax={false}>
           <Hero />
         </BackgroundSection>
         <section id="about-us">
@@ -25,7 +29,13 @@ export default async function Home() {
         </section>
 
         <div>
-          <VideoPlayer src="/video/cch1.mp4" className="w-full shadow-xl" />
+          <Image
+            src="/lions-gate-bridge.webp"
+            alt="building view"
+            width="1512"
+            height="572"
+            className="object-cover w-full"
+          />
         </div>
 
         <section id="our-edge">
