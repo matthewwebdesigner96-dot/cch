@@ -36,7 +36,7 @@ const Header = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 z-50 w-full bg-linear-to-b from-[#3d6878] to-transparent"
+      className="fixed top-0 left-0 right-0 z-50 w-full bg-linear-to-b from-[#01445d] to-transparent"
       animate={{ y: visible ? 0 : "-100%" }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >

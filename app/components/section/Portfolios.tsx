@@ -56,22 +56,24 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
     return <div>Loading portfolios...</div>;
   }
   return (
-    <section className="w-full bg-white relative">
+    <section className="w-full bg-white relative lg:pb-20">
       {/* Desktop prev/next arrows */}
-      <button
-        onClick={() => swiperRef.current?.slidePrev()}
-        className="hidden lg:block absolute left-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
-        aria-label="Previous slide"
-      >
-        <Image src="/circle-arrow-left.svg" alt="" height={60} width={60} />
-      </button>
-      <button
-        onClick={() => swiperRef.current?.slideNext()}
-        className="hidden lg:block absolute right-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
-        aria-label="Next slide"
-      >
-        <Image src="/circle-arrow-right.svg" alt="" height={60} width={60} />
-      </button>
+      <div className="hidden lg:flex absolute bottom-0 lg:bottom-20 left-1/2 -translate-x-1/2 z-20">
+        <button
+          onClick={() => swiperRef.current?.slidePrev()}
+          className="cursor-pointer"
+          aria-label="Previous slide"
+        >
+          <Image src="/circle-arrow-left.svg" alt="" height={60} width={60} />
+        </button>
+        <button
+          onClick={() => swiperRef.current?.slideNext()}
+          className="cursor-pointer"
+          aria-label="Next slide"
+        >
+          <Image src="/circle-arrow-right.svg" alt="" height={60} width={60} />
+        </button>
+      </div>
 
       <div className="max-w-7xl mx-auto py-20 relative flex flex-col items-center gap-8 h-50vh md:min-h-screen lg:min-h-[70vh] px-4 md:px-8 lg:grid lg:grid-cols-[50%_45%] lg:place-items-center lg:gap-16">
         <span className="order-0 self-start lg:hidden text-xl font-heading font-bold text-black">OUR PORTFOLIO</span>

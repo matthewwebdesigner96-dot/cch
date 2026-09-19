@@ -39,7 +39,7 @@ const Hero = () => {
       </div>
 
       <Image
-        className="absolute bottom-0 -right-1/2 sm:-right-1/3 xl:-right-1/4 opacity-60 w-150 h-70 lg:w-150 lg:h-100"
+        className="absolute bottom-10 -right-3/4 sm:-right-1/3 xl:-right-1/4 opacity-60 w-150 h-70 lg:w-150 lg:h-100"
         height={360}
         width={420}
         src="/logo.png"
