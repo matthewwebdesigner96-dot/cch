@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Button from "../ui/Button";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
@@ -21,6 +21,18 @@ const Nav = () => {
     return pathname.startsWith(`/${link}`);
   };
   const { handleLinkClick: navigate } = useHashNavigation();
+
+  useEffect(() => {
+    if (isMenuActive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuActive]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     navigate(e);
@@ -68,7 +80,7 @@ const Nav = () => {
       <div className="relative">
         <motion.button
           onClick={() => setIsMenuActive(!isMenuActive)}
-          className="absolute group flex flex-col gap-2 cursor-pointer tracking-wider top-0 right-0 md:hidden z-51"
+          className="absolute group flex flex-col gap-2 cursor-pointer tracking-wider top-1/2 -translate-y-1/2 right-0 md:hidden z-51"
           aria-label={isMenuActive ? "Close Menu" : "Open Menu"}
           aria-expanded={isMenuActive}
           aria-controls="mobile-menu"
@@ -98,20 +110,27 @@ const Nav = () => {
               id="mobile-menu"
               className="fixed inset-0 flex flex-col justify-start pt-32 p-6 md:hidden z-50 animate-fadeIn"
             >
-              <div className="absolute top-6 left-6 right-6 flex justify-between items-center">
+              <div className="absolute top-0 left-0 right-0 flex justify-between items-center px-4 py-8">
                 <Link
                   href="/"
                   onClick={handleLogoClick}
                   className="text-white text-2xl font-bold"
                 >
                   <Image
-                    className="md:hidden cursor-pointer"
-                    src="/mobile-logo.svg"
+                    className="w-40 cursor-pointer"
+                    src="/logo.svg"
                     alt="CCH-Investment Logo"
-                    width={41}
+                    width={250}
                     height={41}
                   />
                 </Link>
+                {/* <Image
+                  className="md:hidden cursor-pointer"
+                  src="/mobile-logo.svg"
+                  alt="CCH-Investment Logo"
+                  width={41}
+                  height={41}
+                /> */}
               </div>
 
               <ul className="flex flex-col gap-8 text-3xl">

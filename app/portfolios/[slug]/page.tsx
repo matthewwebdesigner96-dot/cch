@@ -53,7 +53,7 @@ export default async function PortfolioPage({ params }: PageProps) {
     <>
       <BackgroundSection variant="none" className="bg-foreground text-black">
         {featuredImage ? (
-          <div className="relative h-[80vh] -mx-2 md:-mx-4">
+          <div className="relative h-[50vh] sm:h-[70vh] lg:h-[80vh] -mx-2 md:-mx-4">
             <Image
               src={featuredImage}
               alt={portfolio.title.rendered}
@@ -70,26 +70,26 @@ export default async function PortfolioPage({ params }: PageProps) {
             {portfolio.title.rendered}
           </h1> */}
 
-          <div className="pt-8 lg:py-25 w-full max-w-7xl mx-auto">
-          <div id="portfolio-content" className="space-y-4 flex lg:flex-row flex-col gap-12">
-            <div className="lg:w-2/5 lg:mx-12">
+          <div className="pt-8 pb-12 lg:py-25 w-full max-w-7xl mx-auto">
+          <div id="portfolio-content" className="lg:mx-12 space-y-4 flex lg:flex-row flex-col gap-34">
+            <div className="lg:w-1/5 flex flex-col items-center lg:items-start">
               <Image
                 src={portfolio.acf?.project_logo || ""}
                 alt={portfolio.title.rendered + " logo"}
                 width={400}
                 height={400}
-                className="mb-4 mx-auto lg:mx-0 grayscale brightness-0"
+                className="mb-4 w-40 h-auto lg:w-full grayscale brightness-0"
               />
-              <div className="mx-12 lg:mx-0 lg:pl-7.5 space-y-4">
-                <div className="flex flex-col lg:flex-row lg:gap-1">
+              <div className="lg:pl-7.5 space-y-4">
+                <div className="flex gap-1 lg:whitespace-nowrap">
                   <strong>Region:</strong>
                   <span>{portfolio.acf?.region}</span>
                 </div>
-                <div className="flex flex-col lg:flex-row lg:gap-1">
+                <div className="flex gap-1 lg:whitespace-nowrap">
                   <strong>Industry:</strong>
                   <span>{portfolio.acf?.industry}</span>
                 </div>
-                <div className="flex flex-col lg:flex-row lg:gap-1">
+                <div className="flex gap-1 lg:whitespace-nowrap">
                   <strong>Year:</strong>
                   <span>{portfolio.acf?.year}</span>
                 </div>

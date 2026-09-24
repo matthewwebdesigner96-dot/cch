@@ -44,19 +44,19 @@ const Header = () => {
         <Link href="/" onClick={handleLogoClick}>
           <div>
             <Image
-              className="hidden w-40 lg:w-56 md:block cursor-pointer"
+              className="w-40 lg:w-56 cursor-pointer"
               src="/logo.svg"
               alt="CCH-Investment Logo"
               width={250}
               height={41}
             />
-            <Image
+            {/* <Image
               className="md:hidden cursor-pointer"
               src="/mobile-logo.svg"
               alt="CCH-Investment Logo"
               width={41}
               height={41}
-            />
+            /> */}
           </div>
         </Link>
         <Nav />
