@@ -34,7 +34,7 @@ export default async function Home() {
             alt="building view"
             width="3975"
             height="2981"
-            className="object-cover w-full h-220"
+            className="object-cover w-full h-[50vh] md:h-220"
           />
         </div>
 
