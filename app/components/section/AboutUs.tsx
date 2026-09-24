@@ -113,7 +113,7 @@ const AboutUs = ({ logos }: AboutUsProps) => {
             }}
           >
             <Image
-              src="/about-us.webp"
+              src="/about-us.jpg"
               alt="building view"
               fill
               className="object-cover scale-110"

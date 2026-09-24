@@ -6,52 +6,13 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import type { EdgeSector } from "@/lib/wordpress";
 
-const sectors = [
-  {
-    img: "/real_estate.webp",
-    svg: "/real_estate.svg",
-    title: "Real Estate",
-    description:
-      "Investing in commercial and residential real estate with a focus on long-term appreciation and stable cash flow generation.",
-  },
-  {
-    img: "/industrials.webp",
-    svg: "/industrials.svg",
-    title: "Technology",
-    description:
-      "Funding innovative technology companies that build scalable digital products and drive transformation across industries.",
-  },
-  {
-    img: "/finance_services.webp",
-    svg: "/finance_services.svg",
-    title: "Healthcare",
-    description:
-      "Supporting healthcare initiatives including hospitals, medical research, and biotech startups improving quality of life.",
-  },
-  {
-    img: "/consumer_products.webp",
-    svg: "/consumer_products.svg",
-    title: "Renewable Energy",
-    description:
-      "Developing sustainable energy projects such as solar and wind farms to promote clean and environmentally friendly power.",
-  },
-  {
-    img: "/media_entertainment.webp",
-    svg: "/media_entertainment.svg",
-    title: "Infrastructure",
-    description:
-      "Investing in large-scale infrastructure projects including transportation networks and smart city developments.",
-  },
-  {
-    img: "/technology.webp",
-    svg: "/technology.svg",
-    title: "Private Credit",
-    description:
-      "Expanding financial services through fintech solutions, private equity investments, and diversified asset management.",
-  },
-];
-const Edge = () => {
+interface EdgeProps {
+  sectors: EdgeSector[];
+}
+
+const Edge = ({ sectors }: EdgeProps) => {
   const splideRef = useRef<SplideType | null>(null);
 
   return (

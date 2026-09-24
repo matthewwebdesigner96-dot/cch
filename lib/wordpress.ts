@@ -42,6 +42,64 @@ export async function getPortfolios(): Promise<PortfolioItem[]> {
   }
 }
 
+interface EdgeSectorPost {
+  id: number;
+  acf: {
+    title: string;
+    short_description: string;
+    image: number;
+    hover_icon: number;
+  };
+}
+
+export interface EdgeSector {
+  title: string;
+  description: string;
+  img: string;
+  svg: string;
+}
+
+export async function getEdgeSectors(): Promise<EdgeSector[]> {
+  try {
+    const res = await fetch(`${ENDPOINTS.EDGE_SECTORS}?per_page=100`, {
+      next: { revalidate: REVALIDATE_TIME },
+    });
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch edge sectors: ${res.status} ${res.statusText}`,
+      );
+    }
+    const posts: EdgeSectorPost[] = await res.json();
+    const resolveMediaUrl = async (id: number): Promise<string> => {
+      const mediaRes = await fetch(ENDPOINTS.MEDIA_BY_ID(id), {
+        next: { revalidate: REVALIDATE_TIME },
+      });
+      if (!mediaRes.ok) return "";
+      const media = await mediaRes.json();
+      return media.source_url ?? "";
+    };
+
+    return Promise.all(
+      posts.map(async (post) => {
+        const [img, svg] = await Promise.all([
+          resolveMediaUrl(post.acf.image),
+          resolveMediaUrl(post.acf.hover_icon),
+        ]);
+
+        return {
+          title: post.acf.title,
+          description: post.acf.short_description,
+          img,
+          svg,
+        };
+      }),
+    );
+  } catch (error) {
+    console.error("Error fetching edge sectors:", error);
+    throw error;
+  }
+}
+
 export async function getPortfolioBySlug(
   slug: string,
 ): Promise<PortfolioItem | null> {

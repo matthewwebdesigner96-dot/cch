@@ -17,12 +17,12 @@ const Footer = () => {
             CCH Investments is a Canadian family office that invests in private
             companies with a focus on building lasting value.
           </p>
-          <span className="text-[7px] font-extralight">
+          <span className="hidden md:block text-[7px] font-extralight">
             CCH INVESTMENTS &copy; COPYRIGHT 2026. ALL RIGHTS RESERVED.
           </span>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="hidden md:flex flex-col gap-4">
           <FooterNav />
           <address className="font-extralight not-italic text-sm md:text-right">
             Floor 15 - 543 Granville Street <br />

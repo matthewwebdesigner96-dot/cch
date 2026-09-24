@@ -1,11 +1,10 @@
 import AboutUs from "./components/section/AboutUs";
 import Hero from "./components/section/Hero";
-import VideoPlayer from "./components/ui/VideoPlayer";
 import Portfolios from "./components/section/Portfolios";
 import Edge from "./components/section/Edge";
 import Approach from "./components/section/Approach";
 import Contact from "./components/section/Contact";
-import { getPortfolios } from "@/lib/wordpress";
+import { getPortfolios, getEdgeSectors } from "@/lib/wordpress";
 import BackgroundSection from "./components/layout/BackgroundSection";
 import HashScroll from "./components/layout/HashScroll";
 import Image from "next/image";
@@ -16,6 +15,7 @@ export default async function Home() {
     src: p.acf.project_logo,
     slug: p.slug,
   }));
+  const edgeSectors = await getEdgeSectors();
 
   return (
     <div className="flex overflow-hidden min-h-screen  bg-zinc-50 font-sans">
@@ -30,16 +30,16 @@ export default async function Home() {
 
         <div>
           <Image
-            src="/lions-gate-bridge.webp"
+            src="/lions-gate-bridge.jpg"
             alt="building view"
-            width="1512"
-            height="572"
-            className="object-cover w-full"
+            width="3975"
+            height="2981"
+            className="object-cover w-full h-220"
           />
         </div>
 
         <section id="our-edge">
-          <Edge />
+          <Edge sectors={edgeSectors} />
         </section>
 
         <section id="our-approach">

@@ -1,17 +1,19 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Approach = () => {
   return (
-    <section className=" bg-navy-mid max-h-2/3 w-screen grid grid-cols-1 grid-rows-2 md:grid-rows-1 md:grid-cols-2 md:gap-14">
-      <div className="relative">
-        <video
-          className="w-full h-full object-cover"
-          src="/video/cch-approach.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
+    <section className=" bg-navy-mid w-screen grid grid-cols-1 grid-rows-2 md:grid-rows-1 md:grid-cols-2 md:gap-14 md:items-center">
+      <div className="relative h-80 md:h-[648px]">
+        <Image
+          src="/our-approach.jpg"
+          alt="Our approach"
+          height="3205"
+          width="4807"
+          sizes="(max-width: 767px) 100vw, 50vw"
+          quality={90}
+          className="object-cover w-full h-full"
         />
       </div>
 

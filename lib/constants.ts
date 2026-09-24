@@ -7,6 +7,8 @@ export const REVALIDATE_TIME = 3600; // 1 hour in seconds
 export const ENDPOINTS = {
     PORTFOLIO: `${WORDPRESS_API_URL}/portfolio`,
     PORTFOLIO_BY_SLUG: (slug: string) => `${WORDPRESS_API_URL}/portfolio?_embed&slug=${encodeURIComponent(slug)}`,
+    EDGE_SECTORS: `${WORDPRESS_API_URL}/posts`,
+    MEDIA_BY_ID: (id: number) => `${WORDPRESS_API_URL}/media/${id}`,
 } as const;
 
 export const LINK_ARR = [
