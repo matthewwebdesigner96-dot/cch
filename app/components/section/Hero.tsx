@@ -46,7 +46,11 @@ const Hero = () => {
         alt=""
       />
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+      <Link
+        href="/#about-us"
+        aria-label="Scroll to next section"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
+      >
         <svg
           className="rotate-90"
           width="48"
@@ -57,15 +61,8 @@ const Hero = () => {
         >
           <path d="M18.75 30L41.25 30" stroke="#0C2438" strokeWidth="2.5" strokeLinecap="round" />
           <path d="M33.75 37.5L41.25 30L33.75 22.5" stroke="#0C2438" strokeWidth="2.5" strokeLinecap="round" />
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M5 30C5 43.8071 16.1929 55 30 55C43.8071 55 55 43.8071 55 30C55 16.1929 43.8071 5 30 5C16.1929 5 5 16.1929 5 30Z"
-            stroke="#0C2438"
-            strokeWidth="2"
-          />
         </svg>
-      </div>
+      </Link>
     </motion.section>
   );
 };
