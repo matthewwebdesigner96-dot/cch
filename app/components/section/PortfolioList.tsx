@@ -31,7 +31,7 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
               {/* Image */}
               <div className="relative w-full h-56 md:w-72 lg:w-112 md:h-auto shrink-0 overflow-hidden self-stretch">
                 <Image
-                  className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                  className="object-cover md:grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
                   src={el.acf.cover_image}
                   alt={el.title.rendered}
                   fill

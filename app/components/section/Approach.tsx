@@ -4,13 +4,13 @@ import Image from "next/image";
 
 const Approach = () => {
   return (
-    <section className=" bg-navy-mid w-screen grid grid-cols-1 grid-rows-2 md:grid-rows-1 md:grid-cols-2 md:gap-14 md:items-center">
-      <div className="relative h-80 md:h-[648px]">
+    <section className=" bg-navy-mid w-screen flex flex-col md:flex-row md:items-start md:gap-14">
+      <div className="relative h-fit md:h-125 md:w-1/2">
         <Image
           src="/our-approach.jpg"
           alt="Our approach"
-          height="3205"
-          width="4807"
+          height="4807"
+          width="3205"
           sizes="(max-width: 767px) 100vw, 50vw"
           quality={90}
           className="object-cover w-full h-full"
@@ -18,7 +18,7 @@ const Approach = () => {
       </div>
 
       <motion.div
-        className="max-w-125 row-start-2 md:row-start-1 md:col-start-2 py-16 md:py-24 px-4 flex flex-col gap-4 md:gap-6"
+        className="max-w-125 md:flex-1 py-16 md:py-24 px-4 flex flex-col gap-4 md:gap-6"
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.7 }}
