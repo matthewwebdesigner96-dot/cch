@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/navigation";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface PortfoliosProps {
   initialSlides: PortfolioItem[];
@@ -76,9 +77,23 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
       </div>
 
       <div className="max-w-7xl mx-auto py-20 relative flex flex-col items-center gap-8 h-50vh md:min-h-screen lg:min-h-[70vh] px-4 md:px-8 lg:grid lg:grid-cols-[50%_45%] lg:place-items-center lg:gap-16">
-        <span className="order-0 self-start lg:hidden text-xl font-heading font-bold text-black">OUR PORTFOLIO</span>
+        <motion.span
+          className="order-0 self-start lg:hidden text-xl font-heading font-bold text-black"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.7 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          OUR PORTFOLIO
+        </motion.span>
 
-        <div className="order-2 lg:order-1 w-full max-w-600 hidden lg:block mx-auto">
+        <motion.div
+          className="order-2 lg:order-1 w-full max-w-600 hidden lg:block mx-auto"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <span className="text-xl w-fit rounded-full font-heading font-bold text-black">OUR PORTFOLIO</span>
           <h1 className="text-2xl lg:text-4xl font-extralight leading-8 md:leading-15 text-black mb-9 mt-4">
             {activeSlide?.title.rendered || "Capital Portfolio"}
@@ -110,9 +125,15 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
           >
             View all portfolios
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="order-1 lg:order-2 relative w-[320px] h-105 sm:w-90 sm:h-115 md:w-105 md:h-125">
+        <motion.div
+          className="order-1 lg:order-2 relative w-[320px] h-105 sm:w-90 sm:h-115 md:w-105 md:h-125"
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           {/* Mobile pagination — matches Edge style */}
           <button
             aria-label="Previous slide"
@@ -208,7 +229,7 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
             ))}
           </Swiper>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
