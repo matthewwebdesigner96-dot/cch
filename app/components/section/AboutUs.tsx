@@ -53,7 +53,7 @@ const AboutUs = ({ logos }: AboutUsProps) => {
     <section className="px-4 xl:px-0 py-16 md:py-24 w-screen max-w-7xl mx-auto">
       <div className="flex flex-col gap-10">
         <p className="text-blue-deep text-xl">
-          Trusted Partners of CCH Investments, from film production to consumer products
+          Trusted Partners of CCH Investments
         </p>
         {/* Swiper */}
         <div className="group whitespace-nowrap py-4 flex flex-col gap-4 overflow-hidden shadow-2xl rounded-4xl bg-white">

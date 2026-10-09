@@ -31,7 +31,7 @@ const Edge = ({ sectors }: EdgeProps) => {
           <h2 className="flex flex-col w-fit text-2xl lg:text-4xl font-extralight leading-8 md:leading-15">
             Our Primary Investment Sectors
           </h2>
-          <p className="hidden md:block md:w-1/2 text-justify">
+          <p className="hidden md:block md:w-1/2">
             CCH Investments is a Canadian family office dedicated to investing
             in private companies with a long-term perspective and a focus on
             building lasting value. Guided by a hands.
