@@ -28,11 +28,8 @@ export const metadata: Metadata = {
   },
   description: "Your next step to private investments",
   icons: {
-    icon: [
-      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
+    icon: [{ url: "/icons/cch-favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/icons/cch-favicon.svg",
     apple: "/icons/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",

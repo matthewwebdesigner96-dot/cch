@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -14,40 +14,40 @@ interface AboutUsProps {
 }
 
 const AboutUs = ({ logos }: AboutUsProps) => {
-  // parallax state
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-  const [translateY, setTranslateY] = useState(0);
-
-  useEffect(() => {
-    let rafId = 0;
-    const maxTranslate = 50;
-
-    function update() {
-      if (!wrapperRef.current) return;
-      const rect = wrapperRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight || 1;
-      const elementCenter = rect.top + rect.height / 2;
-      const normalized =
-        (elementCenter - windowHeight / 2) / (windowHeight / 2);
-      const next = Math.max(-1, Math.min(1, normalized)) * maxTranslate;
-      setTranslateY(next);
-    }
-
-    const onScroll = () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
+  // parallax state (disabled)
+  // const wrapperRef = useRef<HTMLDivElement | null>(null);
+  // const [translateY, setTranslateY] = useState(0);
+  //
+  // useEffect(() => {
+  //   let rafId = 0;
+  //   const maxTranslate = 50;
+  //
+  //   function update() {
+  //     if (!wrapperRef.current) return;
+  //     const rect = wrapperRef.current.getBoundingClientRect();
+  //     const windowHeight = window.innerHeight || 1;
+  //     const elementCenter = rect.top + rect.height / 2;
+  //     const normalized =
+  //       (elementCenter - windowHeight / 2) / (windowHeight / 2);
+  //     const next = Math.max(-1, Math.min(1, normalized)) * maxTranslate;
+  //     setTranslateY(next);
+  //   }
+  //
+  //   const onScroll = () => {
+  //     if (rafId) cancelAnimationFrame(rafId);
+  //     rafId = requestAnimationFrame(update);
+  //   };
+  //
+  //   update();
+  //   window.addEventListener("scroll", onScroll, { passive: true });
+  //   window.addEventListener("resize", onScroll);
+  //
+  //   return () => {
+  //     if (rafId) cancelAnimationFrame(rafId);
+  //     window.removeEventListener("scroll", onScroll);
+  //     window.removeEventListener("resize", onScroll);
+  //   };
+  // }, []);
 
   return (
     <section className="px-4 xl:px-0 py-16 md:py-24 w-screen max-w-7xl mx-auto">
@@ -102,15 +102,16 @@ const AboutUs = ({ logos }: AboutUsProps) => {
 
       <div className="mt-24 grid grid-cols-1 text-blue-deep gap-x-4 gap-y-8 md:gap-x-16 lg:gap-x-32 lg:grid-cols-2 lg:grid-rows-[auto_1fr] md:px-4">
         <div
-          ref={wrapperRef}
+          // ref={wrapperRef}
           className="relative rounded-4xl overflow-hidden h-64 sm:h-80 md:h-96 lg:h-152 lg:row-span-2 order-2 lg:order-1"
         >
           <div
-            className="absolute inset-0 will-change-transform"
-            style={{
-              transform: `translateY(${translateY}px)`,
-              transition: "transform 0.1s linear",
-            }}
+            className="absolute inset-0"
+            // className="absolute inset-0 will-change-transform"
+            // style={{
+            //   transform: `translateY(${translateY}px)`,
+            //   transition: "transform 0.1s linear",
+            // }}
           >
             <Image
               src="/about-us.jpg"

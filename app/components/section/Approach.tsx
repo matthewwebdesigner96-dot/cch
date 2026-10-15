@@ -5,7 +5,7 @@ import Image from "next/image";
 const Approach = () => {
   return (
     <section className=" bg-navy-mid w-screen flex flex-col md:flex-row md:items-start md:gap-14">
-      <div className="relative h-fit md:h-125 md:w-1/2">
+      <div className="relative h-72 sm:h-96 md:h-125 md:w-1/2">
         <Image
           src="/our-approach.jpg"
           alt="Our approach"

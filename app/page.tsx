@@ -30,10 +30,12 @@ export default async function Home() {
 
         <div>
           <Image
-            src="/lions-gate-bridge.jpg"
+            src="/homebigpng.png"
             alt="building view"
-            width="3975"
-            height="2981"
+            width="6048"
+            height="2288"
+            sizes="100vw"
+            quality={90}
             className="object-cover w-full h-[50vh] md:h-220"
           />
         </div>
