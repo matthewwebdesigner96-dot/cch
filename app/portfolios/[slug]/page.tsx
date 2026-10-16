@@ -80,7 +80,7 @@ export default async function PortfolioPage({ params }: PageProps) {
                 height={400}
                 className="mb-4 w-40 h-auto lg:w-full grayscale brightness-0"
               />
-              <div className="lg:pl-7.5 space-y-4">
+              <div className="space-y-4">
                 <div className="flex gap-1 lg:whitespace-nowrap">
                   <strong>Region:</strong>
                   <span>{portfolio.acf?.region}</span>
