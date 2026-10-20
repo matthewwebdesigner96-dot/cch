@@ -26,12 +26,12 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="group flex flex-col md:flex-row cursor-pointer transition-all duration-300 border-b border-black/10 bg-white text-navy-dark hover:bg-navy-dark hover:text-white"
+              className="group flex flex-col md:flex-row cursor-pointer transition-colors duration-300 border-b border-black/10 bg-white text-navy-dark hover:bg-navy-dark hover:text-white"
             >
               {/* Image */}
-              <div className="relative w-full h-56 md:w-72 lg:w-112 md:h-auto shrink-0 overflow-hidden self-stretch">
+              <div className="relative w-full h-56 md:w-72 lg:w-112 md:h-auto shrink-0 overflow-hidden self-stretch bg-navy-dark">
                 <Image
-                  className="object-cover md:grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                  className="object-cover md:grayscale transition-[filter,transform] duration-500 group-hover:grayscale-0 group-hover:scale-105"
                   src={el.acf.cover_image}
                   alt={el.title.rendered}
                   fill
@@ -55,7 +55,7 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
                     alt="CCH Investments"
                     width={120}
                     height={32}
-                    className="transition-all duration-300 [filter:brightness(0)_saturate(100%)_invert(10%)_sepia(40%)_saturate(800%)_hue-rotate(180deg)] group-hover:[filter:brightness(0)_invert(1)]"
+                    className="transition-[filter] duration-300 [filter:brightness(0)_saturate(100%)_invert(10%)_sepia(40%)_saturate(800%)_hue-rotate(180deg)] group-hover:[filter:brightness(0)_invert(1)]"
                   />
 
                   {el.acf.industry && (
