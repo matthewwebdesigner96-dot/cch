@@ -1,5 +1,6 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
+import { WORDPRESS_CACHE_TAG } from "@/lib/constants";
 
 async function getIncomingSecret(request: NextRequest): Promise<string | null> {
     const headerSecret = request.headers.get("x-revalidate-secret");
@@ -40,9 +41,10 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        revalidatePath("/");
-        revalidatePath("/portfolios");
-        revalidatePath("/portfolios/[slug]", "page");
+        // Expire cached WordPress responses immediately (no stale-while-revalidate),
+        // then purge every rendered page, including new/removed portfolio slugs and the sitemap.
+        revalidateTag(WORDPRESS_CACHE_TAG, { expire: 0 });
+        revalidatePath("/", "layout");
 
         return NextResponse.json({ revalidated: true, now: Date.now() });
     } catch (error) {

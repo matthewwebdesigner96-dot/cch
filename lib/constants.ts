@@ -2,7 +2,9 @@ export const SITE_URL = "https://www.cch-investments.com";
 
 export const WORDPRESS_API_URL = "https://mediumaquamarine-partridge-477378.hostingersite.com/wp-json/wp/v2";
 
-export const REVALIDATE_TIME = 3600; // 1 hour in seconds
+export const REVALIDATE_TIME = 3600; // 1 hour in seconds (fallback; WordPress webhook purges immediately)
+
+export const WORDPRESS_CACHE_TAG = "wordpress";
 
 export const ENDPOINTS = {
     PORTFOLIO: `${WORDPRESS_API_URL}/portfolio`,

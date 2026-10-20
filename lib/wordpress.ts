@@ -1,4 +1,4 @@
-import { ENDPOINTS, REVALIDATE_TIME } from "./constants";
+import { ENDPOINTS, REVALIDATE_TIME, WORDPRESS_CACHE_TAG } from "./constants";
 
 export interface PortfolioItem {
   slug: string;
@@ -28,7 +28,7 @@ export interface PortfolioItem {
 export async function getPortfolios(): Promise<PortfolioItem[]> {
   try {
     const res = await fetch(`${ENDPOINTS.PORTFOLIO}?_embed`, {
-      next: { revalidate: REVALIDATE_TIME },
+      next: { revalidate: REVALIDATE_TIME, tags: [WORDPRESS_CACHE_TAG] },
     });
     if (!res.ok) {
       throw new Error(
@@ -62,7 +62,7 @@ export interface EdgeSector {
 export async function getEdgeSectors(): Promise<EdgeSector[]> {
   try {
     const res = await fetch(`${ENDPOINTS.EDGE_SECTORS}?per_page=100`, {
-      next: { revalidate: REVALIDATE_TIME },
+      next: { revalidate: REVALIDATE_TIME, tags: [WORDPRESS_CACHE_TAG] },
     });
     if (!res.ok) {
       throw new Error(
@@ -72,7 +72,7 @@ export async function getEdgeSectors(): Promise<EdgeSector[]> {
     const posts: EdgeSectorPost[] = await res.json();
     const resolveMediaUrl = async (id: number): Promise<string> => {
       const mediaRes = await fetch(ENDPOINTS.MEDIA_BY_ID(id), {
-        next: { revalidate: REVALIDATE_TIME },
+        next: { revalidate: REVALIDATE_TIME, tags: [WORDPRESS_CACHE_TAG] },
       });
       if (!mediaRes.ok) return "";
       const media = await mediaRes.json();
@@ -105,7 +105,7 @@ export async function getPortfolioBySlug(
 ): Promise<PortfolioItem | null> {
   try {
     const res = await fetch(ENDPOINTS.PORTFOLIO_BY_SLUG(slug), {
-      next: { revalidate: REVALIDATE_TIME },
+      next: { revalidate: REVALIDATE_TIME, tags: [WORDPRESS_CACHE_TAG] },
     });
     if (res.status === 404) return null;
     if (!res.ok) {
