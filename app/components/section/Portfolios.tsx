@@ -47,7 +47,7 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
 
       setTimeout(() => {
         isAnimating.current = false;
-      }, 1200);
+      }, 800);
     }, 100000);
 
     return () => clearInterval(interval);
@@ -128,7 +128,7 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
         </motion.div>
 
         <motion.div
-          className="order-1 lg:order-2 relative w-[320px] h-105 sm:w-90 sm:h-115 md:w-105 md:h-125"
+          className="order-1 lg:order-2 relative w-[320px] h-105 sm:w-90 sm:h-115 md:w-105 md:h-125 lg:h-145"
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -192,7 +192,7 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
               shadowOffset: 10,
               shadowScale: 0.94,
             }}
-            speed={1000}
+            speed={600}
             grabCursor
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
