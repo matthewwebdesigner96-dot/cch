@@ -73,13 +73,16 @@ export default async function PortfolioPage({ params }: PageProps) {
           <div className="pt-8 pb-12 lg:py-25 w-full max-w-7xl mx-auto">
           <div id="portfolio-content" className="lg:mx-12 space-y-4 flex lg:flex-row flex-col gap-12 lg:gap-34">
             <div className="lg:w-1/5 flex flex-col items-center lg:items-start">
-              <Image
-                src={portfolio.acf?.project_logo || ""}
-                alt={portfolio.title.rendered + " logo"}
-                width={400}
-                height={400}
-                className="mb-4 w-40 h-auto lg:w-full grayscale brightness-0"
-              />
+              {/* Block wrapper keeps the img out of the flex column; Safari sizes flex-item images differently */}
+              <div className="mb-4 w-40 lg:w-full">
+                <Image
+                  src={portfolio.acf?.project_logo || ""}
+                  alt={portfolio.title.rendered + " logo"}
+                  width={400}
+                  height={400}
+                  className="block w-full h-auto grayscale brightness-0"
+                />
+              </div>
               <div className="space-y-4">
                 <div className="flex gap-1 lg:whitespace-nowrap">
                   <strong>Region:</strong>
