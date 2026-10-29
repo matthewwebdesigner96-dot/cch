@@ -4,6 +4,8 @@ import BackgroundSection from "../../components/layout/BackgroundSection";
 import PortfolioBackgroundCarousel from "../../components/section/PortfolioBackgroundCarousel";
 import ContactSingle from "@/app/components/section/ContactSingle";
 import { getPortfolioBySlug, getPortfolios } from "@/lib/wordpress";
+import { stripHtml } from "@/lib/content";
+import { descriptionToHtml } from "@/lib/richtext";
 import type { Metadata } from "next";
 
 type PageProps = {
@@ -24,10 +26,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: portfolio.title.rendered,
-    description: portfolio.acf.description,
+    description: stripHtml(portfolio.acf.description),
     openGraph: {
       title: portfolio.title.rendered,
-      description: portfolio.excerpt.rendered.replace(/<[^>]*>/g, ""),
+      description: stripHtml(portfolio.excerpt.rendered),
       ...(ogImage && { images: [{ url: ogImage, width: 1200, height: 630 }] }),
     },
   };
@@ -131,14 +133,12 @@ export default async function PortfolioPage({ params }: PageProps) {
               </div>
             </div>
             <div className="lg:w-3/5 lg:pl-12 lg:border-l border-gray-300 lg:flex lg:items-center">
-              <div className="space-y-6 text-lg">
-                {(portfolio.acf?.description || "")
-                  .split(/\r?\n\r?\n/)
-                  .filter((chunk: string) => chunk.trim().length > 0)
-                  .map((chunk: string, i: number) => (
-                    <p key={i}>{chunk}</p>
-                  ))}
-              </div>
+              <div
+                className="space-y-6 text-lg [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_a]:underline"
+                dangerouslySetInnerHTML={{
+                  __html: descriptionToHtml(portfolio.acf?.description || ""),
+                }}
+              />
             </div>
           </div>
           </div>

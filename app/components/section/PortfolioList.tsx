@@ -1,6 +1,7 @@
 "use client";
 
 import { PortfolioItem } from "@/lib/wordpress";
+import { stripHtml } from "@/lib/content";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,9 +16,9 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
   return (
     <section className="w-full flex flex-col">
       {data.map((el) => {
-        const rawDescription =
-          el.acf.description || el.excerpt.rendered.replace(/<[^>]*>/g, "");
-        const description = rawDescription.replace(/^Overview\s*/i, "");
+        const description = (
+          stripHtml(el.excerpt.rendered) || stripHtml(el.acf.description)
+        ).replace(/^Overview\s*/i, "");
 
         return (
           <Link key={el.id} href={"/portfolios/" + el.slug}>

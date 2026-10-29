@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCube, Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { PortfolioItem } from "@/lib/wordpress";
+import { stripHtml } from "@/lib/content";
 import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/navigation";
@@ -24,6 +25,11 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
     slides[0] || null,
   );
   const [mobileTextVisible, setMobileTextVisible] = useState(true);
+
+  const summary = activeSlide
+    ? stripHtml(activeSlide.excerpt.rendered) ||
+      stripHtml(activeSlide.acf.description).replace(/^Overview\s*/i, "")
+    : "";
 
   const truncateWords = (text: string, limit = 50) => {
     const words = text.trim().split(/\s+/);
@@ -100,7 +106,7 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
           </h1>
           <p className="mb-8 text-black">
             {truncateWords(
-              activeSlide?.acf.description ||
+              summary ||
                 "Some text about the company here. Our tours are designed to transport you to the heart of the world's most captivating destinations, creating memories that will last a lifetime. You can uncover the hidden gems, iconic landmarks, and unique cultural treasures that make each destination special.",
               50,
             )}
@@ -164,7 +170,7 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
               </h1>
               <p className="text-sm mt-4 text-white/95 drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)] mb-4">
                 {truncateWords(
-                  activeSlide?.acf.description ||
+                  summary ||
                     "Some text about the company here. Our tours are designed to transport you to the heart of the world's most captivating destinations, creating memories that will last a lifetime. You can uncover the hidden gems, iconic landmarks, and unique cultural treasures that make each destination special.",
                   28,
                 )}
