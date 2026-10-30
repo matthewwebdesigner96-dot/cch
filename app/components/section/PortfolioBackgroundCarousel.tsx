@@ -97,7 +97,7 @@ export default function PortfolioBackgroundCarousel({ items }: PortfolioBackgrou
                                             alt={item.title.rendered + " logo"}
                                             width={220}
                                             height={110}
-                                            className="h-24 w-full object-contain opacity-0 transition duration-300 group-hover:opacity-100 max-md:opacity-(--focus) max-md:transition-none"
+                                            className="h-24 w-full max-w-44 md:max-w-56 object-contain opacity-0 transition duration-300 group-hover:opacity-100 max-md:opacity-(--focus) max-md:transition-none"
                                         />
                                     </div>
                                 ) : (
