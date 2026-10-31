@@ -34,7 +34,7 @@ const Edge = ({ sectors }: EdgeProps) => {
           <p className="hidden md:block md:w-1/2">
             CCH Investments is a Canadian family office dedicated to investing
             in private companies with a long-term perspective and a focus on
-            building lasting value. Guided by a hands.
+            building lasting value.
           </p>
         </motion.div>
 
