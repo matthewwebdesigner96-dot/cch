@@ -16,10 +16,10 @@ const Contact = () => {
 
       <div className="flex items-center justify-center py-16 md:py-24 px-4">
         <ContactForm className="w-full max-w-125 flex flex-col gap-6 md:gap-8">
-          <p>
+          {/* <p>
             We provide strategic equity investments designed to fuel sustainable
             growth and lasting partnerships.
-          </p>
+          </p> */}
         </ContactForm>
       </div>
     </section>

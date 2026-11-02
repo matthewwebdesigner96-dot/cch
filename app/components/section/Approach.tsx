@@ -34,9 +34,9 @@ const Approach = () => {
           We provide strategic equity investments designed to fuel sustainable
           growth and lasting partnerships. Rooted in principled decision-making,
           our mission is to provide exclusive access to aligned capital
-          strategies that deliver a competitive advantage.We provide strategic
-          equity investments designed to fuel sustainable growth and lasting
-          partnerships. Rooted in principled decision-making, our
+          strategies that deliver a competitive advantage. We partner with
+          founders and management teams, combining patient capital with
+          hands-on operational support to build enduring value.
         </p>
       </motion.div>
     </section>

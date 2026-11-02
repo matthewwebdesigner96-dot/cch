@@ -63,7 +63,7 @@ export default function PortfolioBackgroundCarousel({ items }: PortfolioBackgrou
     return (
         <section ref={sectionRef} className="w-screen relative left-1/2 -translate-x-1/2">
             <div className="overflow-hidden">
-                <div className="flex w-max animate-[marquee_80s_linear_infinite] md:animate-marquee hover:[animation-play-state:paused]">
+                <div className="flex w-max animate-[marquee_60s_linear_infinite] md:animate-marquee hover:[animation-play-state:paused]">
                     {loopedItems.map((item, index) => {
                         const cover = item.acf?.cover_image;
                         const logo = item.acf?.project_logo;
