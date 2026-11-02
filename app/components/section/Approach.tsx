@@ -31,12 +31,10 @@ const Approach = () => {
           Partners in Performance
         </h2>
         <p>
-          We provide strategic equity investments designed to fuel sustainable
-          growth and lasting partnerships. Rooted in principled decision-making,
-          our mission is to provide exclusive access to aligned capital
-          strategies that deliver a competitive advantage. We partner with
-          founders and management teams, combining patient capital with
-          hands-on operational support to build enduring value.
+          We make equity investments to support growth and build long-term partnerships. 
+          Guided by principled decision-making, we align strategic goals, offer targeted market 
+          access, and help secure a competitive advantage. By combining patient capital with 
+          operational support, we work alongside management teams to build enduring value.
         </p>
       </motion.div>
     </section>
