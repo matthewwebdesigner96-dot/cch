@@ -59,9 +59,9 @@ const PortfolioList = ({ data }: { data: PortfolioItem[] }) => {
                     className="transition-[filter] duration-300 [filter:brightness(0)_saturate(100%)_invert(10%)_sepia(40%)_saturate(800%)_hue-rotate(180deg)] group-hover:[filter:brightness(0)_invert(1)]"
                   />
 
-                  {el.acf.industry && (
+                  {(el.acf.list_industry || el.acf.industry) && (
                     <span className="w-fit text-xs px-3 py-1 rounded-sm border border-navy-dark/25 text-navy-dark/60 group-hover:border-gold group-hover:text-gold transition-colors duration-300">
-                      {el.acf.industry}
+                      {el.acf.list_industry || el.acf.industry}
                     </span>
                   )}
 

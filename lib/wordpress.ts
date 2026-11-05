@@ -13,6 +13,7 @@ export interface PortfolioItem {
     project_logo: string;
     region: string;
     industry: string;
+    list_industry?: string;
     year: number;
     description: string;
     cover_image: string;
