@@ -39,13 +39,6 @@ export const metadata: Metadata = {
     description: "Your next step to private investments",
     url: `${SITE_URL}/`,
     siteName: "CCH Investments",
-    images: [
-      {
-        url: "/images/og-image.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
     type: "website",
   },
 };
