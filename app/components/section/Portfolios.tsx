@@ -31,6 +31,12 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
       stripHtml(activeSlide.acf.description).replace(/^Overview\s*/i, "")
     : "";
 
+  const truncateWords = (text: string, limit = 28) => {
+    const words = text.trim().split(/\s+/);
+    if (words.length <= limit) return text;
+    return words.slice(0, limit).join(" ") + "...";
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       const swiper = swiperRef.current;
@@ -160,14 +166,16 @@ export default function Portfolios({ initialSlides }: PortfoliosProps) {
                 {activeSlide?.title.rendered || "Capital Portfolio"}
               </h1>
               <p className="text-sm mt-4 text-white/95 drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)] mb-4">
-                {summary ||
-                  "Some text about the company here. Our tours are designed to transport you to the heart of the world's most captivating destinations, creating memories that will last a lifetime. You can uncover the hidden gems, iconic landmarks, and unique cultural treasures that make each destination special."}
+                {truncateWords(
+                  summary ||
+                    "Some text about the company here. Our tours are designed to transport you to the heart of the world's most captivating destinations, creating memories that will last a lifetime. You can uncover the hidden gems, iconic landmarks, and unique cultural treasures that make each destination special.",
+                )}
               </p>
               <Link
                 href="/portfolios"
                 className="my-4 pointer-events-auto inline-flex px-4 py-2 rounded-4xl text-xs transition-all ease-in duration-200 bg-blue-light text-blue-deep hover:bg-blue-deep hover:text-blue-light w-fit uppercase tracking-wide"
               >
-                View all portfolios
+                View Portfolio
               </Link>
             </div>
           </div>
