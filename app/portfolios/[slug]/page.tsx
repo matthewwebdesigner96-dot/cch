@@ -85,7 +85,7 @@ export default async function PortfolioPage({ params }: PageProps) {
                   className="block w-full h-auto grayscale brightness-0"
                 />
               </div>
-              <div className="space-y-4">
+              <div className="space-y-1 lg:space-y-4">
                 <div className="flex gap-1 lg:whitespace-nowrap">
                   <strong>Region:</strong>
                   <span>{portfolio.acf?.region}</span>
